@@ -4,7 +4,35 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>$(AssemblyName)</Title>
+    <Authors>Alfredo Aguiar Arce</Authors>
+    <Description>DapperQuery is a .NET library that provides a fluent API for building SQL queries using Dapper, a popular micro-ORM for .NET. With DapperQuery, you can easily create complex SQL statements with a simple and intuitive syntax, using method chaining to add clauses, conditions, and parameters.
+
+The library includes support for various database engines, such as SQL Server, MySQL, and PostgreSQL, and provides helpers for common scenarios like paging, filtering, sorting, and aggregating data.
+
+In addition, DapperQuery includes a DataTableBuilder class that enables you to convert generic lists of objects to DataTables, which can be useful for integrating with other parts of your application that require tabular data.
+
+DapperQuery is designed to be lightweight, fast, and easy to use, with minimal configuration and dependencies. It's a great choice for developers who want a simple and flexible way to interact with databases using Dapper.</Description>
+    <PackageProjectUrl>https://github.com/alfredoaguiararce/Dapper.QueryBuilder</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/alfredoaguiararce/Dapper.QueryBuilder</RepositoryUrl>
+    <PackageTags>dapper; query; builder; sql; storedprocedure; procedure;</PackageTags>
+    <PackageReleaseNotes>Version 1.0.0 (April 26, 2023):
+
+Initial release of the DataTableBuilder library.
+Allows for easy creation and population of DataTable objects in C#.
+Includes methods for adding columns, adding data, and building the DataTable.</PackageReleaseNotes>
+    <Company>Alfredo Aguiar Arce</Company>
+    <PackageId>Dapper.Query.Builders</PackageId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.123" />
