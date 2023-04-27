@@ -8,7 +8,10 @@ This project is a .NET library that provides a set of builders to simplify the c
 
 ## **Installation**
 
-To use this library, simply download the latest release from the Releases section of the GitHub repository and add a reference to the DapperQuery.Builder.dll assembly in your .NET project.
+
+```bash
+dotnet add package Dapper.Query.Builders --version 1.0.0
+```
 
 ## **Usage**
 
