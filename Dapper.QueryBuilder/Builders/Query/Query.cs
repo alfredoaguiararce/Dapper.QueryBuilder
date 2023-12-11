@@ -15,6 +15,7 @@ namespace DapperQuery.Builder.Builders.Query
         private string? mSQLCommand;
         // The command type of the sql query
         private CommandType? mQueryType;
+        private Func<Task> mCallback;
 
         private int? mTimeout = null;
 
@@ -27,6 +28,10 @@ namespace DapperQuery.Builder.Builders.Query
             this.mQueryParameters = QueryParameters;
             this.mSQLCommand = StoredProcedureName;
             this.mQueryType = QueryType;
+        }
+        public void SetCallback(Func<Task> callback)
+        {
+            mCallback = callback;
         }
 
         public void SetTimeout(int TimeOut)
@@ -234,8 +239,10 @@ namespace DapperQuery.Builder.Builders.Query
                     if (this.GetTransaction()) CommitTransaction(QueryTransaction);
 
                 }
-                return Result;
-            
+
+            await ExecuteCallback();
+
+            return Result;
         }
 
 
@@ -384,12 +391,22 @@ namespace DapperQuery.Builder.Builders.Query
 
                 if (this.GetTransaction()) CommitTransaction(QueryTransaction);
             }
+
+            await ExecuteCallback();
         }
 
         public T? GetParameterByName<T>(String Key)
         {
             if (this.mQueryParameters is null) return default(T);
             return this.mQueryParameters.Get<T>(Key);
+        }
+
+        private async Task ExecuteCallback()
+        {
+            if (mCallback != null)
+            {
+                await mCallback();
+            }
         }
     }
 }

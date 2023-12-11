@@ -276,6 +276,13 @@ namespace DapperQuery.Builder.Builders.Query
             return this;
         }
 
+        public QueryBuilder WithCallback(Func<Task> callback)
+        {
+            mQuery.SetCallback(callback);
+            return this;
+        }
+
+
         /// <summary>
         /// This function sets a timeout for a query in a QueryBuilder object.
         /// </summary>
